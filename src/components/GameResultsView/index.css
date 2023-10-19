@@ -4,10 +4,11 @@
   align-items: center;
   justify-content: center;
   color: #223a5f;
-  font-size: 10px;
+  font-size: 15px;
   font-family: 'Roboto';
-  height: 100px;
-  width: 20px;
+  font-weight: 700;
+  height: 50px;
+  width: 100px;
   border-style: none;
   border-radius: 5px;
   outline: none;

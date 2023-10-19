@@ -38,6 +38,7 @@ export const ScoreBoardContainer = styled.div`
   height: 100%;
   width: 15%;
   border: none;
+  background-color: #ffffff;
 
   @media screen and (max-width: 576px) {
     width: 25%;
@@ -45,7 +46,8 @@ export const ScoreBoardContainer = styled.div`
 `
 export const ScoreHeading = styled.p`
   color: #223a5f;
-  font-size: 20px;
+  font-size: 25px;
+  font-weight: 500;
   margin-bottom: 0px;
 
   @media screen and (max-width: 576px) {
@@ -56,6 +58,7 @@ export const ScoreResult = styled.p`
   color: #223a5f;
   font-size: 40px;
   font-family: 'Roboto';
+  font-weight: 700;
   margin-bottom: 0px;
 
   @media screen and (max-width: 576px) {
