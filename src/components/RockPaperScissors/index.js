@@ -42,9 +42,9 @@ class RockPaperScissors extends Component {
     newArray: [choicesList[0], choicesList[1]],
   }
 
-  getGameResult = (item1, item2) => {
-    if (item1.id === 'ROCK') {
-      switch (item2.id) {
+  getGameResult = (you, opponent) => {
+    if (you.id === 'ROCK') {
+      switch (opponent.id) {
         case 'PAPER':
           return 'YOU LOSE'
         case 'SCISSORS':
@@ -52,8 +52,8 @@ class RockPaperScissors extends Component {
         default:
           return 'IT IS DRAW'
       }
-    } else if (item1.id === 'PAPER') {
-      switch (item2.id) {
+    } else if (you.id === 'PAPER') {
+      switch (opponent.id) {
         case 'SCISSORS':
           return 'YOU LOSE'
         case 'ROCK':
@@ -62,7 +62,7 @@ class RockPaperScissors extends Component {
           return 'IT IS DRAW'
       }
     } else {
-      switch (item2.id) {
+      switch (opponent.id) {
         case 'ROCK':
           return 'YOU LOSE'
         case 'PAPER':
@@ -75,11 +75,11 @@ class RockPaperScissors extends Component {
 
   restartGame = () => this.setState({isShow: true})
 
-  checkResult = id => {
+  opponentRandomChoice = id => {
     const {score} = this.state
-    const choice1 = choicesList.filter(eachValue => eachValue.id === id)
-    const choice2 = choicesList[Math.floor(Math.random() * choicesList.length)]
-    const gameResult = this.getGameResult(choice1[0], choice2)
+    const opponent = choicesList[Math.floor(Math.random() * choicesList.length)]
+    const you = choicesList.filter(eachValue => eachValue.id === id)
+    const gameResult = this.getGameResult(you[0], opponent)
 
     let newScore = score
     if (gameResult === 'YOU WON') {
@@ -93,7 +93,7 @@ class RockPaperScissors extends Component {
     this.setState({
       isShow: false,
       score: newScore,
-      newArray: [choice1[0], choice2],
+      newArray: [you[0], opponent],
       text: gameResult,
     })
   }
@@ -108,7 +108,7 @@ class RockPaperScissors extends Component {
           text={text}
           isShow={isShow}
           newArray={newArray}
-          checkResult={this.checkResult}
+          opponentRandomChoice={this.opponentRandomChoice}
           restartGame={this.restartGame}
         />
         <RulesViewContainer>

@@ -10,7 +10,14 @@ import {
 import './index.css'
 
 const GameResultsView = props => {
-  const {choicesList, isShow, checkResult, newArray, text, restartGame} = props
+  const {
+    choicesList,
+    isShow,
+    opponentRandomChoice,
+    newArray,
+    text,
+    restartGame,
+  } = props
 
   const showGame = () => (
     <GameResultViewContainer>
@@ -19,7 +26,7 @@ const GameResultsView = props => {
           <GameButton
             type="button"
             data-testid="rockButton"
-            onClick={() => checkResult(choicesList[0].id)}
+            onClick={() => opponentRandomChoice(choicesList[0].id)}
           >
             <GameImage
               src={choicesList[0].imageUrl}
@@ -31,7 +38,7 @@ const GameResultsView = props => {
           <GameButton
             type="button"
             data-testid="scissorsButton"
-            onClick={() => checkResult(choicesList[1].id)}
+            onClick={() => opponentRandomChoice(choicesList[1].id)}
           >
             <GameImage
               src={choicesList[1].imageUrl}
@@ -43,7 +50,7 @@ const GameResultsView = props => {
           <GameButton
             type="button"
             data-testid="paperButton"
-            onClick={() => checkResult(choicesList[2].id)}
+            onClick={() => opponentRandomChoice(choicesList[2].id)}
           >
             <GameImage
               src={choicesList[2].imageUrl}
@@ -54,7 +61,7 @@ const GameResultsView = props => {
         </>
       )}
 
-      {isShow && (
+      {!isShow && (
         <>
           <ResultImageContainer>
             <GameResultName>YOU</GameResultName>
@@ -69,7 +76,11 @@ const GameResultsView = props => {
           <ResultImageContainer>
             <GameResultText>{text}</GameResultText>
 
-            <button className="button" type="button" onClick={restartGame}>
+            <button
+              className="result-button"
+              type="button"
+              onClick={restartGame}
+            >
               PLAY AGAIN
             </button>
           </ResultImageContainer>

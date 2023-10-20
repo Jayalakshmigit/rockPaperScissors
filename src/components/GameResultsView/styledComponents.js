@@ -20,6 +20,7 @@ export const GameButton = styled.button`
   border-style: none;
   background-color: transparent;
   outline: none;
+  cursor: pointer;
 
   @media screen and (max-width: 576px) {
     height: 100px;
@@ -67,7 +68,7 @@ export const GameResultText = styled.p`
     font-size: 16px;
   }
 `
-export const button = styled.button`
+export const ResultButton = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;
